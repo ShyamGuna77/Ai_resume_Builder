@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ModeToggle } from "./Mode_toggle";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,9 +18,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <a href="#" className="flex-shrink-0 flex items-center">
-              <span className="font-bold text-xl text-gradient">ResumeAI</span>
-            </a>
+            <Link href="/">
+             
+                <span className="font-bold text-xl text-gradient">
+                  ResumeAI
+                </span>
+            
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">

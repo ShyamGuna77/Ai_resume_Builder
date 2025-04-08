@@ -32,12 +32,12 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href = "/resume/create">
-                <Button size="lg" className="group">
+              <Button asChild size="lg" className="group bg-blue-700 text-slate-100">
+                <Link href="/resume/create">
                   <span>Build My Resume</span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
               <Button variant="outline" size="lg">
                 Learn More
               </Button>

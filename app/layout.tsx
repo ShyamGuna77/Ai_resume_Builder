@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./context/theme-provider";
 import Navbar from "./nav/navbar";
+import { ResumeProvider } from "./context/Resume";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -34,8 +35,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          {children}
+          <ResumeProvider>
+            <Navbar />
+            {children}
+          </ResumeProvider>
         </ThemeProvider>
       </body>
     </html>
