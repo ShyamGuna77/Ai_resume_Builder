@@ -59,7 +59,7 @@ const Pricing = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-foreground max-w-3xl mx-auto">
             Choose the perfect plan for your resume needs with no hidden fees
           </p>
         </div>
@@ -71,7 +71,7 @@ const Pricing = () => {
               className={`rounded-xl overflow-hidden ${
                 plan.highlighted
                   ? "ring-2 ring-blue-500 shadow-lg"
-                  : "border border-gray-200 shadow-md"
+                  : "border border-gray-200 shadow-md "
               }`}
             >
               {plan.highlighted && (
@@ -80,29 +80,29 @@ const Pricing = () => {
                 </div>
               )}
 
-              <div className="p-6 bg-white">
+              <div className="p-6 bg-background">
                 <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
                 <div className="mb-4">
                   <span className="text-4xl font-bold">{plan.price}</span>
                   {plan.period && (
-                    <span className="text-gray-600">{plan.period}</span>
+                    <span className="text-foreground">{plan.period}</span>
                   )}
                 </div>
-                <p className="text-gray-600 mb-6">{plan.description}</p>
+                <p className="text-foreground mb-6">{plan.description}</p>
 
                 <div className="space-y-3 mb-8">
                   {plan.features.map((feature, i) => (
                     <div key={i} className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-200 flex items-center justify-center mt-0.5">
                         <Check className="h-3 w-3 text-blue-600" />
                       </div>
-                      <p className="ml-3 text-gray-700 text-sm">{feature}</p>
+                      <p className="ml-3 text-foreground text-sm">{feature}</p>
                     </div>
                   ))}
                 </div>
 
                 <Button
-                  className={`w-full ${
+                  className={`w-full hover:bg-blue-600 ${
                     plan.highlighted ? "bg-blue-600 hover:bg-blue-700" : ""
                   }`}
                   variant={plan.highlighted ? "default" : "outline"}
@@ -114,7 +114,7 @@ const Pricing = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12 text-gray-600">
+        <div className="text-center mt-12 text-foreground">
           <p>
             All plans include a 14-day money-back guarantee. No questions asked.
           </p>
