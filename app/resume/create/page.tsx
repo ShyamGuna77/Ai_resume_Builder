@@ -5,10 +5,12 @@ import Step_Two from "@/app/Steps/Step_Two"
 import Step_three from "@/app/Steps/Step_three"
 import Step_four from "@/app/Steps/Step_four"
 import Step_five from "@/app/Steps/Step_five"
+import ResumeNavbar from "@/app/nav/ResumeNavbar"
 const ResumeCreatePage = () => {
     const {step,resume} = useResume()
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen">
+      <ResumeNavbar />
       {step === 1 && <Step_one />}
       {step === 2 && <Step_Two />}
       {step === 3 && <Step_three />}
