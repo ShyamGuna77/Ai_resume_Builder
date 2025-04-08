@@ -28,7 +28,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="section bg-gray-50">
+    <section id="testimonials" className="section bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -44,7 +44,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 shadow-md card-hover border border-gray-100"
+              className="bg-background rounded-xl p-6 shadow-md card-hover border border-blue-600"
             >
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -54,7 +54,7 @@ const Testimonials = () => {
                   />
                 ))}
               </div>
-              <p className="text-gray-700 mb-6">{testimonial.content}</p>
+              <p className="text-foreground mb-6">{testimonial.content}</p>
               <div className="flex items-center">
                 <Image
                   src={testimonial.avatar}
