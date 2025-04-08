@@ -1,111 +1,117 @@
-"use client";
-import React, { useState, useEffect } from "react";
+"use client"
+
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import { ModeToggle } from "./Mode_toggle";
-import Image from "next/image";
-import Link from "next/link";
 
-const Navbar: React.FC = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
-        };
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-background text-foreground backdrop-blur-md border-b border-gray-200 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <a href="#" className="flex-shrink-0 flex items-center">
+              <span className="font-bold text-xl text-gradient">ResumeAI</span>
+            </a>
+          </div>
 
-    return (
-        <nav
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-                isScrolled
-                    ? "bg-white/90 backdrop-blur-lg shadow-lg"
-                    : "bg-transparent"
-            }`}
-        >
-            <div className="max-w-7xl mx-auto px-6 md:px-10 py-3 flex justify-between items-center h-16">
-                {/* Logo Section */}
-                <div className="flex items-center space-x-4">
-                    <Link href="/">
-                        <div className="flex items-center space-x-2 cursor-pointer">
-                            <Image
-                                src="/slack.svg"
-                                alt="Slack Logo"
-                                width={40}
-                                height={40}
-                                className="rounded-full"
-                            />
-                            <svg
-                                width="200"
-                                height="40"
-                                viewBox="0 0 200 50"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <defs>
-                                    <linearGradient
-                                        id="logoGradient"
-                                        x1="0%"
-                                        y1="0%"
-                                        x2="100%"
-                                        y2="0%"
-                                    >
-                                        <stop
-                                            offset="0%"
-                                            style={{
-                                                stopColor: "#6a11cb",
-                                                stopOpacity: 1,
-                                            }}
-                                        />
-                                        <stop
-                                            offset="100%"
-                                            style={{
-                                                stopColor: "#2575fc",
-                                                stopOpacity: 1,
-                                            }}
-                                        />
-                                    </linearGradient>
-                                </defs>
-                                <text
-                                    x="10"
-                                    y="30"
-                                    fontFamily="Segoe UI, sans-serif"
-                                    fontSize="20"
-                                    fontWeight="bold"
-                                    fill="url(#logoGradient)"
-                                >
-                                    AI Resume Builder
-                                </text>
-                            </svg>
-                        </div>
-                    </Link>
-                </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <a
+              href="#how-it-works"
+              className="text-foreground hover:text-blue-600 transition-colors"
+            >
+              How It Works
+            </a>
+            <a
+              href="#features"
+              className="text-foreground hover:text-blue-600 transition-colors"
+            >
+              Features
+            </a>
+            <a
+              href="#why-choose-us"
+              className="text-foreground hover:text-blue-600 transition-colors"
+            >
+              Why Choose Us
+            </a>
+            <a
+              href="#testimonials"
+              className="text-foreground hover:text-blue-600 transition-colors"
+            >
+              Testimonials
+            </a>
+            <a
+              href="#pricing"
+              className="text-foreground hover:text-blue-600 transition-colors"
+            >
+              Pricing
+            </a>
+            <Button variant="outline" className="ml-4">
+              Sign In
+            </Button>
+            <Button>Get Started</Button>
+            <ModeToggle />
+          </div>
 
-                {/* Navigation Links */}
-                <ul className="flex space-x-8 items-center font-medium text-gray-700 dark:text-gray-300">
-                    <li>
-                        <a
-                            href="#home"
-                            className="hover:text-blue-600 transition-colors duration-200"
-                        >
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#about"
-                            className="hover:text-blue-600 transition-colors duration-200"
-                        >
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <ModeToggle />
-                    </li>
-                </ul>
+          <div className="md:hidden flex items-center">
+            <button onClick={toggleMenu} className="text-foreground">
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-b border-gray-200">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a
+              href="#how-it-works"
+              className="block px-3 py-2 text-foreground hover:text-blue-600"
+            >
+              How It Works
+            </a>
+            <a
+              href="#features"
+              className="block px-3 py-2 text-foreground hover:text-blue-600"
+            >
+              Features
+            </a>
+            <a
+              href="#why-choose-us"
+              className="block px-3 py-2 text-foreground hover:text-blue-600"
+            >
+              Why Choose Us
+            </a>
+            <a
+              href="#testimonials"
+              className="block px-3 py-2 text-foreground hover:text-blue-600"
+            >
+              Testimonials
+            </a>
+            <a
+              href="#pricing"
+              className="block px-3 py-2 text-foreground hover:text-blue-600"
+            >
+              Pricing
+            </a>
+            <div className="pt-4 flex flex-col space-y-2 pb-3">
+              <Button variant="outline" className="w-full">
+                Sign In
+              </Button>
+              <Button className="w-full">Get Started</Button>
             </div>
-        </nav>
-    );
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 };
 
 export default Navbar;

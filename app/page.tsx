@@ -1,16 +1,12 @@
-
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Pricing from "./HeroPage/Pricing";
+import Features from "./HeroPage/Feautures";
+import HeroSection from "./HeroPage/HeroSection";
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-       
-        <Link href="/resume/create"  >
-      <Button>
-        Get Started
-        </Button>
-        </Link>
-
+    <div className=" min-h-screen overflow-x-hidden">
+      <HeroSection />
+      <Features />
+      <Pricing />
     </div>
   );
 }
