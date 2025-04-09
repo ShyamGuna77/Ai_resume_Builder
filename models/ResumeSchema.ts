@@ -12,7 +12,7 @@ const ResumeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    title: {
+    address: {
       type: String,
       required: true,
     },

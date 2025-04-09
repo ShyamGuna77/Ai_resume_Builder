@@ -1,6 +1,8 @@
 "use client"
 
 import React, { ReactNode, useContext, useState } from 'react'
+import { SaveResume } from '@/actions/SaveResume';
+
 
 import { createContext } from 'react'
 
@@ -33,6 +35,7 @@ const ResumeContext = createContext<ResumeContextType | null>(null)
 export const  ResumeProvider = ({children}:{children:ReactNode}) => {
     const [resume,setresume] = useState<ResumeState>(initialState)
     const [step,setStep] = useState<number>(1)
+    
 
   return (
     <ResumeContext.Provider value={{step,setStep,resume,setresume}}>{children}</ResumeContext.Provider>
