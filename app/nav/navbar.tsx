@@ -1,13 +1,22 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ModeToggle } from "./Mode_toggle";
 import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isSignedIn } = useUser();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -19,11 +28,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/">
-             
-                <span className="font-bold text-xl text-gradient">
-                  ResumeAI
-                </span>
-            
+              <span className="font-bold text-xl text-gradient">ResumeAI</span>
             </Link>
           </div>
 
@@ -58,10 +63,28 @@ const Navbar = () => {
             >
               Pricing
             </a>
-            <Button variant="outline" className="ml-4">
-              Sign In
-            </Button>
-            <Button>Get Started</Button>
+            {isSignedIn && (
+              <Link
+                href="/dashboard"
+                className="text-foreground hover:text-blue-600 transition-colors"
+              >
+                Dashboard
+              </Link>
+            )}
+
+            <div className="flex items-center space-x-4">
+              <SignedOut>
+                <SignInButton>
+                  <Button variant="outline">Sign In</Button>
+                </SignInButton>
+                <SignUpButton>
+                  <Button>Sign Up</Button>
+                </SignUpButton>
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </div>
             <ModeToggle />
           </div>
 
@@ -106,11 +129,19 @@ const Navbar = () => {
             >
               Pricing
             </a>
+
             <div className="pt-4 flex flex-col space-y-2 pb-3">
-              <Button variant="outline" className="w-full">
-                Sign In
-              </Button>
-              <Button className="w-full">Get Started</Button>
+              <SignedOut>
+                <SignInButton>
+                  <Button variant="outline">Sign In</Button>
+                </SignInButton>
+                <SignUpButton>
+                  <Button>Sign Up</Button>
+                </SignUpButton>
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
             </div>
           </div>
         </div>
