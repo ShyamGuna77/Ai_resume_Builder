@@ -1,6 +1,8 @@
 import React from 'react'
+import { ConnectDB } from '@/utils/db'
+const Dashbaord = async () => {
 
-const Dashbaord = () => {
+  await ConnectDB()
   return (
     <div>page</div>
   )
